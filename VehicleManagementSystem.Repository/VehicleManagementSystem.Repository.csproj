@@ -1,5 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\VehicleManagementSystem.Repository.Common\VehicleManagementSystem.Repository.Common.csproj" />
+    <ProjectReference Include="..\VehicleManagementSystem.DAL\VehicleManagementSystem.DAL.csproj" />
+    <ProjectReference Include="..\VehicleManagementSystem.Model\VehicleManagementSystem.Model.csproj" />
+    <ProjectReference Include="..\VehicleManagementSystem.Model.Common\VehicleManagementSystem.Model.Common.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
