@@ -5,18 +5,13 @@ namespace VehicleManagementSystem.DAL.Entities;
 /// </summary>
 public class VehicleMake
 {
-    /// <summary>
-    /// Jedinstveni identifikator proizvođača
-    /// </summary>
+    
     public int Id { get; set; }
-    
-    /// <summary>
-    /// Naziv proizvođača vozila (npr. BMW, Ford)
-    /// </summary>
     public string Name { get; set; } = string.Empty;
+    public string Abrv { get; set; } = string.Empty;
     
     /// <summary>
-    /// Skraćenica naziva proizvođača
+    /// Navigacijsko svojstvo - kolekcija modela za ovog proizvođača
     /// </summary>
-    public string Abrv { get; set; } = string.Empty;
+    public virtual ICollection<VehicleModel> Models { get; set; } = new List<VehicleModel>();
 } 
