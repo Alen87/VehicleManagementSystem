@@ -5,22 +5,16 @@ using VehicleManagementSystem.Common.Sorting;
 namespace VehicleManagementSystem.Common;
 
 /// <summary>
-/// Klasa koja kombinira opcije za filtriranje, sortiranje i straničenje
+/// Klasa koja kombinira opcije za filtriranje, sortiranje i stranice
 /// </summary>
 public class QueryOptions
 {
-    /// <summary>
-    /// Opcije za filtriranje
-    /// </summary>
+    
     public FilterOptions Filtering { get; set; } = new FilterOptions();
     
-    /// <summary>
-    /// Opcije za sortiranje
-    /// </summary>
+    
     public SortOptions Sorting { get; set; } = new SortOptions();
     
-    /// <summary>
-    /// Opcije za straničenje
-    /// </summary>
+   
     public PagingOptions Paging { get; set; } = new PagingOptions();
 } 

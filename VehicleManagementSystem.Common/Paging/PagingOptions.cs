@@ -1,8 +1,5 @@
 namespace VehicleManagementSystem.Common.Paging;
 
-/// <summary>
-/// Klasa koja sadrži opcije za straničenje
-/// </summary>
 public class PagingOptions
 {
     private const int MaxPageSize = 50;

@@ -1,8 +1,6 @@
 namespace VehicleManagementSystem.Model.Common;
 
-/// <summary>
-/// Sučelje za model vozila
-/// </summary>
+
 public interface IVehicleModel : IBaseModel
 {
   
