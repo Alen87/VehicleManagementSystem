@@ -1,3 +1,4 @@
+using AutoMapper;
 using VehicleManagementSystem.DAL;
 using VehicleManagementSystem.DAL.Entities;
 using VehicleManagementSystem.Model;
@@ -9,33 +10,13 @@ namespace VehicleManagementSystem.Repository;
 
 public class VehicleEngineTypeRepository : GenericRepository<IVehicleEngineType, VehicleEngineType>, IVehicleEngineTypeRepository
 {
-    public VehicleEngineTypeRepository(VehicleDbContext context) : base(context)
+    public VehicleEngineTypeRepository(VehicleDbContext context, IMapper mapper) : base(context, mapper)
     {
-    }
-
-    protected override IVehicleEngineType MapEntityToModel(VehicleEngineType entity)
-    {
-        return new Model.VehicleEngineType
-        {
-            Id = entity.Id,
-            Type = entity.Type,
-            Abrv = entity.Abrv
-        };
-    }
-
-    protected override VehicleEngineType MapModelToEntity(IVehicleEngineType model)
-    {
-        return new VehicleEngineType
-        {
-            Id = model.Id,
-            Type = model.Type,
-            Abrv = model.Abrv
-        };
     }
 
     protected override IQueryable<VehicleEngineType> ApplyFiltering(IQueryable<VehicleEngineType> query, Common.QueryOptions options)
     {
-        // Jednostavna implementacija filtriranja
+       
         if (options.Filtering != null && !string.IsNullOrWhiteSpace(options.Filtering.SearchQuery))
         {
             string searchQuery = options.Filtering.SearchQuery.ToLower();

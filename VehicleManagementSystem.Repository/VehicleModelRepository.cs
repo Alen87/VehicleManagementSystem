@@ -1,3 +1,4 @@
+using AutoMapper;
 using VehicleManagementSystem.DAL;
 using VehicleManagementSystem.DAL.Entities;
 using VehicleManagementSystem.Model;
@@ -10,7 +11,7 @@ namespace VehicleManagementSystem.Repository;
 
 public class VehicleModelRepository : GenericRepository<IVehicleModel, VehicleModel>, IVehicleModelRepository
 {
-    public VehicleModelRepository(VehicleDbContext context) : base(context)
+    public VehicleModelRepository(VehicleDbContext context, IMapper mapper) : base(context, mapper)
     {
     }
 
@@ -44,7 +45,7 @@ public class VehicleModelRepository : GenericRepository<IVehicleModel, VehicleMo
 
     protected override IQueryable<VehicleModel> ApplyFiltering(IQueryable<VehicleModel> query, Common.QueryOptions options)
     {
-        // Implementacija filtriranja za VehicleModel
+       
         if (options.Filtering != null && !string.IsNullOrWhiteSpace(options.Filtering.SearchQuery))
         {
             string searchQuery = options.Filtering.SearchQuery.ToLower();
@@ -53,7 +54,7 @@ public class VehicleModelRepository : GenericRepository<IVehicleModel, VehicleMo
                 m.Abrv.ToLower().Contains(searchQuery));
         }
 
-        // Filtriranje po MakeId ako je specificirano
+       
         if (options.Filtering != null && options.Filtering.Filters.ContainsKey("makeId"))
         {
             if (int.TryParse(options.Filtering.Filters["makeId"], out int makeId))
@@ -83,7 +84,7 @@ public class VehicleModelRepository : GenericRepository<IVehicleModel, VehicleMo
                         ? query.OrderBy(m => m.Abrv) 
                         : query.OrderByDescending(m => m.Abrv);
                     break;
-                default: // Po defaultu sortiramo po ID-u
+                default: 
                     query = isAscending 
                         ? query.OrderBy(m => m.Id) 
                         : query.OrderByDescending(m => m.Id);
