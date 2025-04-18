@@ -11,7 +11,6 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly VehicleDbContext _context;
     private readonly IMapper _mapper;
-    private readonly Dictionary<Type, object> _repositories;
     private bool _disposed;
 
     private IVehicleMakeRepository _vehicleMakeRepository;
@@ -25,7 +24,6 @@ public class UnitOfWork : IUnitOfWork
     {
         _context = context;
         _mapper = mapper;
-        _repositories = new Dictionary<Type, object>();
         _disposed = false;
     }
 
@@ -91,20 +89,6 @@ public class UnitOfWork : IUnitOfWork
             }
             return _vehicleRegistrationRepository;
         }
-    }
-
-   
-    public IGenericRepository<T> GetRepository<T>() where T : IBaseModel
-    {
-       
-        var type = typeof(T);
-        if (_repositories.ContainsKey(type))
-        {
-            return (IGenericRepository<T>)_repositories[type];
-        }
-
-        
-        throw new NotImplementedException($"Repozitorij za tip {type.Name} nije implementiran.");
     }
 
    
